@@ -1,7 +1,7 @@
 module MarsOne
   module Commands
 
-    class MoveCommand
+    class UnexpectedCommand
       def execute(rover)
         # noop
       end

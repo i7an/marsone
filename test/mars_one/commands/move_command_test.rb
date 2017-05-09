@@ -9,7 +9,7 @@ class MoveCommandTest < Minitest::Test
     rover = build_rover([2, 2], [1, 0])
     command.execute(rover)
 
-    assert_equal 3, rover.position.x
-    assert_equal 2, rover.position.y
+    assert_equal(3, rover.position.x)
+    assert_equal(2, rover.position.y)
   end
 end

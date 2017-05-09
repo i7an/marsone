@@ -1,8 +1,8 @@
 require 'singleton'
-require 'move_command'
-require 'turn_left_command'
-require 'turn_right_command'
-require 'unexpected_command'
+require 'mars_one/commands/move_command'
+require 'mars_one/commands/turn_left_command'
+require 'mars_one/commands/turn_right_command'
+require 'mars_one/commands/unexpected_command'
 
 module MarsOne
   module Commands
@@ -26,8 +26,8 @@ module MarsOne
 
       def generate_commands_cache
         cache = {
-          'M' => MoveCommand.new
-          'R' => TurnRightCommand.new
+          'M' => MoveCommand.new,
+          'R' => TurnRightCommand.new,
           'L' => TurnLeftCommand.new
         }
         cache.default_proc = self.method(:command_not_found)

@@ -10,10 +10,10 @@ class TestPoint < Minitest::Test
   end
 
   def test_apply_matrix
-    point = MarsOne::Math::Point.new(1, 1)
+    point = MarsOne::Math::Point.new(-1, -1)
     point.apply_matrix(Matrix[[0, -1], [-1, 0]])
-    assert_equal -1, point.x
-    assert_equal -1, point.y
+    assert_equal 1, point.x
+    assert_equal 1, point.y
   end
 
   def test_add
