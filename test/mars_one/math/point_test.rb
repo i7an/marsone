@@ -2,7 +2,7 @@ require 'minitest/autorun'
 require 'matrix'
 require 'mars_one/math/point'
 
-class TestPoint < Minitest::Test
+class PointTest < Minitest::Test
   def test_initialization
     point = MarsOne::Math::Point.new(1, 2)
     assert_equal 1, point.x

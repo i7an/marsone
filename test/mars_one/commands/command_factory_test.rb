@@ -21,4 +21,10 @@ class CommandFactoryTest < Minitest::Test
     command = MarsOne::Commands::CommandFactory.command('O')
     assert_kind_of(MarsOne::Commands::UnexpectedCommand, command)
   end
+
+  def test_cache
+    comand = MarsOne::Commands::CommandFactory.command('L')
+    comand2 = MarsOne::Commands::CommandFactory.command('L')
+    assert_same(comand, comand2)
+  end
 end
