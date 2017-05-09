@@ -1,14 +1,12 @@
 require 'minitest/autorun'
 require 'mars_one/commands/move_command'
-require 'mars_one/math/point'
-require 'mars_one/rover'
+require_relative './commands_test_helper'
 
-class TestPoint < Minitest::Test
+
+class MoveCommandTest < Minitest::Test
   def test_move
     command = MarsOne::Commands::MoveCommand.new
-    position = MarsOne::Math::Point.new(2, 2)
-    direction = MarsOne::Math::Point.new(1, 0)
-    rover = MarsOne::Rover.new(position, direction)
+    rover = build_rover([2, 2], [1, 0])
     command.execute(rover)
 
     assert_equal 3, rover.position.x

@@ -1,4 +1,4 @@
-require 'turn_command'
+require 'mars_one/commands/turn_command'
 
 module MarsOne
   module Commands
