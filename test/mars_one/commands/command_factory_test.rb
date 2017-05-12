@@ -18,8 +18,9 @@ class CommandFactoryTest < Minitest::Test
   end
 
   def test_unexpected_input
-    command = MarsOne::Commands::CommandFactory.command('O')
-    assert_kind_of(MarsOne::Commands::UnexpectedCommand, command)
+    assert_raises(MarsOne::Commands::CommandFactory::UnexpectedCommandError) do
+      MarsOne::Commands::CommandFactory.command('O')
+    end
   end
 
   def test_cache

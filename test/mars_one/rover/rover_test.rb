@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require 'mars_one/rover'
+require 'mars_one/rover/rover'
 
 class RoverTest < Minitest::Test
   def test_fields

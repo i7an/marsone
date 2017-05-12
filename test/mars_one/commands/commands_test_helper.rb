@@ -1,5 +1,5 @@
-require 'mars_one/math/point'
-require 'mars_one/rover'
+require 'mars_one/rover/point'
+require 'mars_one/rover/rover'
 
 def build_rover(position_coordinates, direction_coordinates)
   position = MarsOne::Math::Point.new(*position_coordinates)

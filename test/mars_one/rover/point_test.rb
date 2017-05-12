@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 require 'matrix'
-require 'mars_one/math/point'
+require 'mars_one/rover/point'
 
 class PointTest < Minitest::Test
   def test_initialization

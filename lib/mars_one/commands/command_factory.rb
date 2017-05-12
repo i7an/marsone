@@ -2,13 +2,15 @@ require 'singleton'
 require 'mars_one/commands/move_command'
 require 'mars_one/commands/turn_left_command'
 require 'mars_one/commands/turn_right_command'
-require 'mars_one/commands/unexpected_command'
 
 module MarsOne
   module Commands
 
     class CommandFactory
       include Singleton
+
+      class UnexpectedCommandError < StandardError
+      end
 
       def initialize
         @commands_cache = generate_commands_cache
@@ -35,7 +37,7 @@ module MarsOne
       end
 
       def command_not_found(cache, command_name)
-        UnexpectedCommand.new
+        raise UnexpectedCommandError.new
       end
     end
 
