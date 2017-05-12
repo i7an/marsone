@@ -16,6 +16,18 @@ module MarsOne
         self.y += other_point.y
       end
 
+      def ==(point)
+        x == point.x && y == point.y
+      end
+      
+      def eql?(point)
+        x == point.x && y == point.y
+      end
+
+      def hash
+        [x, y].hash
+      end
+
       def to_matrix
         Matrix[[x], [y]]
       end

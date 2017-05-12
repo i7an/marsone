@@ -14,12 +14,17 @@ module MarsOne
 
       field_max_x, field_max_y = mission_reader.read_field
       field = MarsOne::Models::Field.new(field_max_x, field_max_y)
+      
       mission_reader.each_rover do |(x, y, dir), commands|
         rover = MarsOne::MissionParser::RoverFactory.rover(x, y, dir)
+        field.validate!(rover.position)
+
         commands.each_char do |command_letter|
           command = MarsOne::MissionParser::CommandFactory.command(command_letter)
           command.execute(rover)
+          field.validate!(rover.position)
         end
+
         field.forbid(rover.position)
         rovers.push(rover)
       end
