@@ -4,7 +4,7 @@ require 'mars_one/commands/turn_left_command'
 require 'mars_one/commands/turn_right_command'
 
 module MarsOne
-  module Commands
+  module MissionParser
 
     class CommandFactory
       include Singleton
@@ -28,9 +28,9 @@ module MarsOne
 
       def generate_commands_cache
         cache = {
-          'M' => MoveCommand.new,
-          'R' => TurnRightCommand.new,
-          'L' => TurnLeftCommand.new
+          'M' => Commands::MoveCommand.new,
+          'R' => Commands::TurnRightCommand.new,
+          'L' => Commands::TurnLeftCommand.new
         }
         cache.default_proc = self.method(:command_not_found)
         cache

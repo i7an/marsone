@@ -1,7 +1,7 @@
 require 'matrix'
 
 module MarsOne
-  module Math
+  module Models
 
     class Point
       attr_accessor :x, :y
