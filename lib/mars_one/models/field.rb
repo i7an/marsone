@@ -4,8 +4,7 @@ module MarsOne
   module Models
 
     class Field
-      class InvalidLocationError < StandardError
-      end
+      InvalidLocationError = Class.new(StandardError)
 
       def initialize(max_x, max_y)
         raise ArgumentError.new if max_x < 0 || max_y < 0

@@ -9,8 +9,7 @@ module MarsOne
     class CommandFactory
       include Singleton
 
-      class UnexpectedCommandError < StandardError
-      end
+      UnexpectedCommandError = Class.new(StandardError)
 
       def initialize
         @commands_cache = generate_commands_cache

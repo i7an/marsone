@@ -4,8 +4,7 @@ module MarsOne
   module MissionParser
 
     class IOMissionReader
-      class InputFormatError < StandardError
-      end
+      InputFormatError = Class.new(StandardError)
 
       attr_accessor :io
 
