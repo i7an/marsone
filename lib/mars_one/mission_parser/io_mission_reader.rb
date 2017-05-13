@@ -13,8 +13,8 @@ module MarsOne
       end
 
       def read_field
-        match_data = io.readline.match(/^(\-?\d+)\s(\-?\d+)$/)
-        raise InputFormatError.new unless match_data
+        match_data = io.readline.match(/^(\d+)\s(\d+)$/)
+        raise InputFormatError.new('Can\'t parse field line') unless match_data
         [match_data[1], match_data[2]].map(&:to_i)
       end
 
@@ -24,7 +24,8 @@ module MarsOne
         until io.eof?
           rover_match_data = io.readline.match(/^(\-?\d+)\s(\-?\d+)\s(N|W|E|S)$/)
           commands_match_data = io.readline.match(/^([A-Z]+)$/)
-          raise InputFormatError.new unless rover_match_data && commands_match_data
+          raise InputFormatError.new('Can\'t parse rover line') unless rover_match_data
+          raise InputFormatError.new('Can\'t parse rover\'s commands') unless commands_match_data
           rover = [
             rover_match_data[1].to_i,
             rover_match_data[2].to_i,

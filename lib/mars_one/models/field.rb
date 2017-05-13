@@ -7,7 +7,6 @@ module MarsOne
       InvalidLocationError = Class.new(StandardError)
 
       def initialize(max_x, max_y)
-        raise ArgumentError.new if max_x < 0 || max_y < 0
         @max_x = max_x
         @max_y = max_y
         @forbidden_points = Set.new
@@ -20,7 +19,7 @@ module MarsOne
       end
 
       def validate!(point)
-        raise InvalidLocationError.new unless valid?(point)
+        raise InvalidLocationError.new('Location is taken') unless valid?(point)
       end
 
       def forbid(point)

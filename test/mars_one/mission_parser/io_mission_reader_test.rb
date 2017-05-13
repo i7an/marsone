@@ -3,10 +3,10 @@ require 'mars_one/mission_parser/io_mission_reader'
 
 class IOMissionReaderTest < Minitest::Test
   def test_read_field
-    io = StringIO.new('-5 6')
+    io = StringIO.new('5 6')
     reader = MarsOne::MissionParser::IOMissionReader.new(io)
     x, y = reader.read_field
-    assert_equal(-5, x)
+    assert_equal(5, x)
     assert_equal(6, y)
   end
 

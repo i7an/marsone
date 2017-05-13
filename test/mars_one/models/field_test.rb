@@ -24,10 +24,4 @@ class FieldTest < Minitest::Test
     field.forbid(Point.new(3, 3))
     assert_equal(false, field.valid?(Point.new(3, 3)))
   end
-
-  def test_arguments
-    assert_raises(ArgumentError) do
-      MarsOne::Models::Field.new(-1, 1)
-    end
-  end
 end

@@ -36,7 +36,7 @@ module MarsOne
       end
 
       def command_not_found(cache, command_name)
-        raise UnexpectedCommandError.new
+        raise UnexpectedCommandError.new("Command '#{command_name}' is not supported")
       end
     end
 
