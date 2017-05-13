@@ -1,6 +1,8 @@
 require 'mars_one/models/field'
-require 'mars_one/mission_parser/rover_factory'
+require 'mars_one/models/rover'
+require 'mars_one/models/point'
 require 'mars_one/mission_parser/command_factory'
+require 'mars_one/mission_parser/utils'
 
 module MarsOne
 
@@ -14,9 +16,11 @@ module MarsOne
 
       field_max_x, field_max_y = mission_reader.read_field
       field = MarsOne::Models::Field.new(field_max_x, field_max_y)
-      
+
       mission_reader.each_rover do |(x, y, dir), commands|
-        rover = MarsOne::MissionParser::RoverFactory.rover(x, y, dir)
+        direction = MarsOne::MissionParser::Utils.direction_to_point(dir)
+        position = MarsOne::Models::Point.new(x, y)
+        rover = MarsOne::Models::Rover.new(position, direction)
         field.validate!(rover.position)
 
         commands.each_char do |command_letter|

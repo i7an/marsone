@@ -19,9 +19,9 @@ module MarsOne
       def ==(point)
         x == point.x && y == point.y
       end
-      
+
       def eql?(point)
-        x == point.x && y == point.y
+        self == point
       end
 
       def hash
