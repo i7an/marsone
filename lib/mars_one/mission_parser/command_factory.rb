@@ -31,7 +31,7 @@ module MarsOne
           'R' => Commands::TurnRightCommand.new,
           'L' => Commands::TurnLeftCommand.new
         }
-        cache.default_proc = self.method(:command_not_found)
+        cache.default_proc = method(:command_not_found)
         cache
       end
 

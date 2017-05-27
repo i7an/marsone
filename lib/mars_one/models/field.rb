@@ -22,7 +22,7 @@ module MarsOne
       end
 
       def forbid(point)
-        forbidden_points.add(point)
+        forbidden_points.add([point.x, point.y])
       end
 
       private
@@ -35,7 +35,7 @@ module MarsOne
       end
 
       def taken?(position)
-        forbidden_points.include?(position)
+        forbidden_points.include?([position.x, position.y])
       end
     end
 

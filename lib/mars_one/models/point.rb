@@ -11,21 +11,13 @@ module MarsOne
         self.y = y
       end
 
-      def add(other_point)
-        self.x += other_point.x
-        self.y += other_point.y
+      def add(other)
+        self.x += other.x
+        self.y += other.y
       end
 
-      def ==(point)
-        x == point.x && y == point.y
-      end
-
-      def eql?(point)
-        self == point
-      end
-
-      def hash
-        [x, y].hash
+      def ==(other)
+        x == other.x && y == other.y
       end
 
       def to_matrix
