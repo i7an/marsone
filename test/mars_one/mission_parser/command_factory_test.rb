@@ -3,30 +3,35 @@ require 'mars_one/errors'
 require 'mars_one/mission_parser/command_factory'
 
 class CommandFactoryTest < Minitest::Test
+  def factory
+    MarsOne::MissionParser::CommandFactory.new
+  end
+
   def test_m_input
-    command = MarsOne::MissionParser::CommandFactory.command('M')
+    command = factory.command('M')
     assert_kind_of(MarsOne::Commands::MoveCommand, command)
   end
 
   def test_r_input
-    command = MarsOne::MissionParser::CommandFactory.command('R')
+    command = factory.command('R')
     assert_kind_of(MarsOne::Commands::TurnRightCommand, command)
   end
 
   def test_l_input
-    command = MarsOne::MissionParser::CommandFactory.command('L')
+    command = factory.command('L')
     assert_kind_of(MarsOne::Commands::TurnLeftCommand, command)
   end
 
   def test_unexpected_input
     assert_raises(MarsOne::UnexpectedCommandError) do
-      MarsOne::MissionParser::CommandFactory.command('O')
+      factory.command('O')
     end
   end
 
   def test_cache
-    comand = MarsOne::MissionParser::CommandFactory.command('L')
-    comand2 = MarsOne::MissionParser::CommandFactory.command('L')
+    command_factory = factory
+    comand = command_factory.command('L')
+    comand2 = command_factory.command('L')
     assert_same(comand, comand2)
   end
 end

@@ -1,4 +1,3 @@
-require 'scanf'
 require 'mars_one/errors'
 
 module MarsOne
@@ -17,7 +16,7 @@ module MarsOne
         [match_data[1], match_data[2]].map(&:to_i)
       end
 
-      def each_rover(&block)
+      def each_rover
         return enum_for(:each_rover) unless block_given?
 
         until io.eof?
