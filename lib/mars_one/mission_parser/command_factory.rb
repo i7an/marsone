@@ -1,4 +1,5 @@
 require 'singleton'
+require 'mars_one/errors'
 require 'mars_one/commands/move_command'
 require 'mars_one/commands/turn_left_command'
 require 'mars_one/commands/turn_right_command'
@@ -8,8 +9,6 @@ module MarsOne
 
     class CommandFactory
       include Singleton
-
-      UnexpectedCommandError = Class.new(StandardError)
 
       def initialize
         @commands_cache = generate_commands_cache
@@ -36,7 +35,7 @@ module MarsOne
       end
 
       def command_not_found(cache, command_name)
-        raise UnexpectedCommandError.new("Command '#{command_name}' is not supported")
+        raise MarsOne::UnexpectedCommandError.new("Command '#{command_name}' is not supported")
       end
     end
 

@@ -1,4 +1,5 @@
 require 'minitest/autorun'
+require 'mars_one/errors'
 require 'mars_one/mission_parser/command_factory'
 
 class CommandFactoryTest < Minitest::Test
@@ -18,7 +19,7 @@ class CommandFactoryTest < Minitest::Test
   end
 
   def test_unexpected_input
-    assert_raises(MarsOne::MissionParser::CommandFactory::UnexpectedCommandError) do
+    assert_raises(MarsOne::UnexpectedCommandError) do
       MarsOne::MissionParser::CommandFactory.command('O')
     end
   end

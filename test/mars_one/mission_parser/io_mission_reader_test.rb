@@ -1,4 +1,5 @@
 require 'minitest/autorun'
+require 'mars_one/errors'
 require 'mars_one/mission_parser/io_mission_reader'
 
 class IOMissionReaderTest < Minitest::Test
@@ -24,7 +25,7 @@ class IOMissionReaderTest < Minitest::Test
   def test_read_field_format
     io = StringIO.new('5, 6')
     reader = MarsOne::MissionParser::IOMissionReader.new(io)
-    assert_raises(MarsOne::MissionParser::IOMissionReader::InputFormatError) do
+    assert_raises(MarsOne::InputFormatError) do
       reader.read_field
     end
   end
@@ -32,7 +33,7 @@ class IOMissionReaderTest < Minitest::Test
   def test_rover_format
     io = StringIO.new("1 2 RR\nMMM")
     reader = MarsOne::MissionParser::IOMissionReader.new(io)
-    assert_raises(MarsOne::MissionParser::IOMissionReader::InputFormatError) do
+    assert_raises(MarsOne::InputFormatError) do
       reader.each_rover.next
     end
   end

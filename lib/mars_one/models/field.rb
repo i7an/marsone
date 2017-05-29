@@ -1,11 +1,10 @@
 require 'set'
+require 'mars_one/errors'
 
 module MarsOne
   module Models
 
     class Field
-      InvalidLocationError = Class.new(StandardError)
-
       def initialize(max_x, max_y)
         @max_x = max_x
         @max_y = max_y
@@ -17,8 +16,8 @@ module MarsOne
       end
 
       def validate!(point)
-        raise InvalidLocationError.new('Point is out of field') unless in_boundaries?(point)
-        raise InvalidLocationError.new('Location is taken') if taken?(point)
+        raise MarsOne::InvalidLocationError.new('Point is out of field') unless in_boundaries?(point)
+        raise MarsOne::InvalidLocationError.new('Location is taken') if taken?(point)
       end
 
       def forbid(point)

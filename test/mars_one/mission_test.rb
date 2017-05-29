@@ -1,4 +1,5 @@
 require 'minitest/autorun'
+require 'mars_one/errors'
 require 'mars_one/mission'
 
 class MissionTest < Minitest::Test
@@ -38,7 +39,7 @@ class MissionTest < Minitest::Test
       [[1, 1, 'W'], 'M']
     ])
     mission = MarsOne::Mission.new(reader)
-    assert_raises(MarsOne::Models::Field::InvalidLocationError) do
+    assert_raises(MarsOne::InvalidLocationError) do
       mission.execute
     end
   end

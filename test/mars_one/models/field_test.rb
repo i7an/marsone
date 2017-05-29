@@ -1,4 +1,5 @@
 require 'minitest/autorun'
+require 'mars_one/errors'
 require 'mars_one/models/field'
 
 class FieldTest < Minitest::Test
@@ -14,7 +15,7 @@ class FieldTest < Minitest::Test
 
   def test_validate
     field = MarsOne::Models::Field.new(5, 5)
-    assert_raises(MarsOne::Models::Field::InvalidLocationError) do
+    assert_raises(MarsOne::InvalidLocationError) do
       field.validate!(Point.new(6, 6))
     end
   end
